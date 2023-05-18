@@ -63,7 +63,7 @@ export const login = async (req, res, next) => {
         if (!user) {
             return res.status(404).json({
                 success: false,
-                message: 'invalid email or password'
+                message: 'invalid email or password, signup with correct credetntials'
             })
         }
 
