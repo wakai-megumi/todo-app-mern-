@@ -9,11 +9,7 @@ const SendToken = async (user, statusCode = 200, res, message) => {
             expiresIn: "15m"
 
         })
-        console.log(
-            process.env.NODE_ENV
-        )
-        console.log(process.env.CLIENT_URL)
-        console.log(process.env.NODE_ENV === 'development')
+
         if (!token) return res.status(403).json({
             success: false,
             message: "problem with creating token"
