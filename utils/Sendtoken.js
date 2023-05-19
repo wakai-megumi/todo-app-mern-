@@ -18,7 +18,7 @@ const SendToken = async (user, statusCode = 200, res, message) => {
         return res.status(statusCode).cookie("accesstoken", token, {
             httpOnly: true,
             maxAge: 15 * 60 * 1000,
-            sameSite: process.env.NODE_ENV === 'development' ? 'lax' : "none",
+            sameSite: 'none',
             secure: false
         }).json({
             success: true,
