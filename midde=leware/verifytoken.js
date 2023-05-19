@@ -1,10 +1,11 @@
 import jwt from "jsonwebtoken";
 const VerifyToken = (req, res, next) => {
     const token = req.cookies.accesstoken;
+    console.log(token, "this is token")
     if (!token) {
         return res.status(401).json({
             success: false,
-            message: "please login first"
+            message: "please login first here"
         })
     }
     try {

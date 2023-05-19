@@ -11,5 +11,4 @@ router.route('/modify/:id')
     .delete(VerifyToken, deleteTask)
     .put(VerifyToken, updateTask)
 
-
 export default router;

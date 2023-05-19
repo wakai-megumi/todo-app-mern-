@@ -11,19 +11,23 @@ import cors from 'cors'
 
 export const app = express();
 
+
+
 //middleware
 config({
     path: "./data/.env"
 })
-app.use(express.json())
-app.use(cookieParser())
+
 app.use(cors({
 
-    origin: process.env.FRONTEND_CLIENT_URL,
+    origin: [process.env.FRONTEND_CLIENT_URL],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
 
 }))
+app.use(express.json())
+app.use(cookieParser())
+
 //routes
 app.use("/api/v1/users", userRouter)
 app.use("/api/v1/tasks", taskRouter)

@@ -23,9 +23,6 @@ export const getAllUsers = async (req, res, next) => {
 /////////////////////////////////////////////////////////////
 //////////////////////////////////////////
 
-export const cook = async () => {
-
-}
 export const register = async (req, res) => {
     try {
         const { username, email, password } = req.body;
@@ -72,12 +69,13 @@ export const login = async (req, res, next) => {
 
         const isMatched = await bcrypt.compareSync(password, user.password)
         if (!isMatched) {
-            return res.status(404).json({
+            return res.status(400).json({
                 success: false,
                 message: 'invalid email or password'
             })
         }
-        SendToken(user, 200, res, `welcome back, ${user.username}`);
+
+        SendToken(user, 207, res, `welcome back, ${user.username}`);
 
     } catch (err) {
         console.log(err)
@@ -137,9 +135,9 @@ export const logout = async (req, res, next) => {
 
         return res.status(200).cookie("accesstoken", "", {
             httpOnly: true,
-            expires: new Date(Date.now() + 10000),
-            sameSite: process.env.NODE_ENV === 'delvelopment' ? 'lax' : "none",
-            secure: process.env.NODE_ENV === 'delvelopment' ? false : true
+            expires: new Date(Date.now() + 1000),
+            sameSite: process.env.NODE_ENV === "development" ? "lax" : "none",
+            secure: process.env.NODE_ENV === "development" ? false : true,
 
         }).json({
             success: true,
