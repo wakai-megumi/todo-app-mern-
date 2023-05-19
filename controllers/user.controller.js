@@ -23,6 +23,9 @@ export const getAllUsers = async (req, res, next) => {
 /////////////////////////////////////////////////////////////
 //////////////////////////////////////////
 
+export const cook = async () => {
+
+}
 export const register = async (req, res) => {
     try {
         const { username, email, password } = req.body;
@@ -147,7 +150,11 @@ export const logout = async (req, res, next) => {
 
     } catch (err) {
         console.log(err)
-        return res.status(400).send(err)
+        return res.status(400).json({
+            message: 'server error'
+            ,
+            err
+        })
     }
 
 }
