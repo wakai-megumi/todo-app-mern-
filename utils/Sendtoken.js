@@ -20,7 +20,7 @@ const SendToken = (user, statusCode = 200, res, message) => {
             httpOnly: true,
             maxAge: 15 * 60 * 1000,
             sameSite: process.env.NODE_ENV === "development" ? "lax" : "none",
-            secure: process.env.NODE_ENV === "development" ? false : true,
+            secure: false
         }).json({
             success: true,
             age: 15 * 60 * 1000,
