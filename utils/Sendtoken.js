@@ -5,8 +5,6 @@ const SendToken = (user, statusCode = 200, res, message) => {
 
 
     try {
-        console.log(user)
-        console.log(res)
         const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET_KEY, {
             expiresIn: "15m"
 
@@ -18,7 +16,6 @@ const SendToken = (user, statusCode = 200, res, message) => {
 
         })
 
-        console.log(token)
         return res.status(200).cookie("accesstoken", token, {
             httpOnly: true,
             maxAge: 15 * 60 * 1000,
